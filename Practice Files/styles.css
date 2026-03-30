@@ -1,0 +1,135 @@
+/* styles.css — styling for #my-list and list items */
+
+body {
+  background: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  background-image: url("./study.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Poppins", sans-serif;
+}
+
+#my-list {
+  max-width: 520px;
+  margin: 1.5rem auto;
+  padding: 0.6rem 0.75rem;
+  padding-left: 1.1rem;
+  background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+  border: 1px solid #e6eef7;
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+  list-style: disc;
+}
+
+#my-list li {
+  padding: 0.45rem 0.6rem;
+  border-radius: 6px;
+  transition: background-color 120ms ease, transform 80ms ease;
+  margin: 0.25rem 0;
+  color: #0f1724;
+}
+
+#my-list li:nth-child(odd) {
+  background: transparent;
+}
+
+#my-list li:hover {
+  background: #e8f0ff;
+  transform: translateX(4px);
+}
+
+/* subtle compact variant for small screens */
+@media (max-width: 480px) {
+  #my-list {
+    margin: 1rem;
+    padding-left: 1.25rem;
+  }
+  #my-list li {
+    padding: 0.4rem 0.5rem;
+  }
+}
+
+/* Button styles moved from inline attributes to CSS */
+button {
+  font: inherit;
+  background: transparent;
+  border: none;
+  padding: 0;
+  margin: 0.25rem 0.5rem 0.25rem 0;
+  cursor: pointer;
+}
+
+#resolveButton,
+#rejectButton {
+  width: auto;
+  height: 50px;
+  border-radius: 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 140ms ease, transform 100ms ease,
+    box-shadow 120ms ease;
+  font-weight: 600;
+  border: 1px solid transparent;
+  border: solid 2px;
+  padding: 10px 15px;
+}
+
+#resolveButton {
+  color: cadetblue;
+  background: #ffffff;
+  border-color: rgba(95, 166, 215, 0.09);
+}
+#resolveButton:hover {
+  background: rgba(95, 166, 215, 0.06);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(95, 166, 215, 0.06);
+}
+
+#rejectButton {
+  color: rgb(201, 110, 94);
+  background: #ffffff;
+  border-color: rgba(201, 110, 94, 0.08);
+}
+#rejectButton:hover {
+  background: rgba(201, 110, 94, 0.04);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(201, 110, 94, 0.04);
+}
+
+/* Focus styles for accessibility */
+#resolveButton:focus,
+#rejectButton:focus {
+  outline: 3px solid rgba(37, 99, 235, 0.12);
+  outline-offset: 2px;
+}
+
+#output {
+  margin: 20px 0;
+  font-size: 18px;
+  font-weight: 500;
+  color: #000;
+  width: auto;
+  height: 50px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Courier New", Courier, monospace;
+  background-color: rgb(238, 220, 194);
+  padding: 0 15px;
+}
+
+#searchBox {
+  margin-top: 20px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  width: 300px;
+  font-family: Arial, Helvetica, sans-serif;
+}

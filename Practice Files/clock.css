@@ -1,0 +1,113 @@
+/* --- The clock face (scaled to 50%) --- */
+.clock {
+  width: 150px;
+  height: 150px;
+  /* Soft gradient for the clock face */
+  background: radial-gradient(circle, #ffffff, #f0f0f0);
+  border-radius: 50%;
+  border: 3px solid #fff;
+  /* Scaled down, softer shadows */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15), 0 1px 4px rgba(0, 0, 0, 0.2),
+    inset 0 0 5px rgba(0, 0, 0, 0.05);
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+/* --- Common style for all hands --- */
+.clock .hand {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  transform: translateX(-50%) rotate(calc(var(--rotation) * 1deg));
+  transform-origin: bottom center;
+  border-radius: 10px 10px 0 0;
+  z-index: 10;
+}
+
+/* --- Specific hand styles (scaled) --- */
+.clock .hour {
+  width: 5px;
+  height: 43px; /* ~half of original */
+  background-color: #333;
+}
+
+.clock .minute {
+  width: 3px;
+  height: 60px; /* ~half of original */
+  background-color: #333;
+  z-index: 11;
+}
+
+.clock .second {
+  width: 1.5px;
+  height: 75px; /* ~half of original */
+  background-color: #e74c3c;
+  z-index: 12;
+  /* Tail adjustments can be uncommented/updated if needed */
+  /* bottom: calc(50% - 12.5px); */
+}
+
+/* --- The dot in the middle (scaled) --- */
+.clock .center-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  background-color: #444;
+  border: 1px solid #e74c3c;
+  border-radius: 50%;
+  z-index: 13;
+}
+
+/* --- Style for the numbers (added by JS) --- */
+.clock .number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1px;
+  height: 1px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #333;
+  /* --rotation is set by JS */
+  /* For a 150px clock: calc(-75px + 17.5px) = -57.5px */
+  transform: rotate(var(--rotation)) translate(0, -57.5px)
+    rotate(calc(-1 * var(--rotation)));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- Style for the ticks (added by JS) --- */
+.clock .tick {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1px;
+  /* calc(150px / 2 - 4px) becomes calc(75px - 4px) = 71px */
+  height: 71px; /* From center to just inside edge */
+  transform-origin: top center;
+  transform: translate(-50%) rotate(var(--rotation));
+}
+
+/* Use a pseudo-element for the visible tick mark */
+.clock .tick::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1px;
+  height: 4px;
+  background-color: #888;
+}
+
+/* Make the 5-minute ticks (hour marks) thicker */
+.clock .tick.thick::before {
+  width: 2px;
+  height: 6px;
+  background-color: #333;
+}
